@@ -9,9 +9,5 @@ it's integrate the Flurry 4.1.0, the Android implementation is reference by Zero
 
 Supported:
 
-Android
-  fully supported 
-iOS
-  startSession
-  endSession
-  logEvent
+Android : fully supported 
+iOS : startSession, endSession, logEvent
