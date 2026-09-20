@@ -33,6 +33,11 @@ For event logging, use `Flurry.LogEvent("event_name")`. The full API surface
 includes timed and parameterized events, user properties, privacy controls,
 remote config, publisher segmentation, and iOS SKAdNetwork support.
 
+## Testing
+
+Unity Test Framework coverage is provided in `Tests/Editor/FlurryApiTests.cs`.
+See `Tests/README.md` for Unity 6 EditMode test instructions.
+
 The upstream release notes and API examples are available in the official
 [Flurry Unity SDK repository](https://github.com/flurry/unity-flurry-sdk).
 
