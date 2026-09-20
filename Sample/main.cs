@@ -1,26 +1,29 @@
 using UnityEngine;
-using System.Collections;
+using FlurrySDK;
 
-public class main : MonoBehaviour {
+public class Main : MonoBehaviour
+{
 #if UNITY_ANDROID
-	private string FLURRY_API = "PPJNXV3ZZ3XV6NP4ZJBB";
-#elif UNITY_IPHONE
-	private string FLURRY_API = "MYSB2HCSHBXBXX3H9FN7";
+    private const string FlurryApiKey = "FLURRY_ANDROID_API_KEY";
+#elif UNITY_IOS || UNITY_IPHONE
+    private const string FlurryApiKey = "FLURRY_IOS_API_KEY";
 #else
-	private string FLURRY_API = "x";
+    private const string FlurryApiKey = null;
 #endif
-	// Use this for initialization
-	void Start () {
-		FlurryAgent.Instance.onStartSession(FLURRY_API);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Time.frameCount%300==0)
-			FlurryAgent.Instance.logEvent("test update");
-	}
-	
-	void OnDestroy(){
-		FlurryAgent.Instance.onEndSession();
-	}
+
+    private void Start()
+    {
+        new Flurry.Builder()
+            .WithCrashReporting(true)
+            .WithLogEnabled(true)
+            .Build(FlurryApiKey);
+    }
+
+    private void Update()
+    {
+        if (Time.frameCount % 300 == 0)
+        {
+            Flurry.LogEvent("test_update");
+        }
+    }
 }

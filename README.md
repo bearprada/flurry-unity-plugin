@@ -1,19 +1,43 @@
-flurry unity plugin
-====================
+Flurry Unity SDK
+================
 
-The Flurry Library for Unity3D. support Android and iOS
+This repository packages Flurry Unity SDK 6.2.0 for current Unity projects,
+with Android and iOS native SDKs included.
 
-Brief:
+## Installation
 
-it's integrate the Flurry 4.1.0, the Android implementation is reference by ZeroStride: http://forum.unity3d.com/threads/87959-FlurryAgent-wrapper-for-Unity-3-2 ,and the dist/flurry.unidy3d : it's packed by Unity 4 IDE
+1. Import `dist/flurry-sdk-6.2.0.unitypackage` through **Assets > Import
+   Package > Custom Package**.
+2. Replace the platform API key placeholders in the sample or your own
+   initialization code.
+3. Add `using FlurrySDK;` and initialize Flurry once at application startup:
 
-Supported:
+```csharp
+new Flurry.Builder()
+    .WithCrashReporting(true)
+    .WithLogEnabled(true)
+    .Build(apiKey);
+```
 
-Android : fully supported 
-iOS : startSession, endSession, logEvent
+The package includes Android AARs and iOS static libraries. The old Android
+JAR, Unity 4 package, and custom native wrapper are no longer used.
+
+## Unity 6
+
+The plugin uses Unity's current `UNITY_IOS` platform symbol, while retaining
+the legacy symbol as a compatibility fallback. It can be imported into Unity
+6 projects through the `.unitypackage`; this repository contains plugin
+assets only and does not define a Unity Editor project or editor version.
+
+For event logging, use `Flurry.LogEvent("event_name")`. The full API surface
+includes timed and parameterized events, user properties, privacy controls,
+remote config, publisher segmentation, and iOS SKAdNetwork support.
+
+The upstream release notes and API examples are available in the official
+[Flurry Unity SDK repository](https://github.com/flurry/unity-flurry-sdk).
 
 
-##License
+## License
 
     Copyright (c) 2015 PRADA Hsiung
 
